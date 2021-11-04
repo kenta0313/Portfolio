@@ -11,7 +11,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Portfolio</title>
       </Head>
       <Header />
-      <Component {...pageProps} />
+      <div className="mx-auto max-w-screen-md">
+        <Component {...pageProps} />
+      </div>
     </>
   )
 }

@@ -3,6 +3,7 @@ export interface Blog {
   title: string;
   tag: string;
   body: HTMLElement;
+  createdAt: Date;
 }
 
 const serviceId = process.env.NEXT_PUBLIC_MICRO_CMS_SERVICE_ID;

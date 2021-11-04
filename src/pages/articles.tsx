@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next"
+import { useState } from "react";
 import Post from "../components/blog/Post";
 import { Blog, fetchAllBlogs } from "../lib/api"
 
@@ -7,12 +8,53 @@ interface Blogs {
 }
 
 const Articles = ({blogs}: Blogs) => {
-  console.log(blogs);
+  //タグの配列作成
+  const arrayTags = () => {
+    const tags = blogs.map((blog) => {
+      return blog.tag
+    });
+    const tags_sort = Array.from(new Set(tags)).sort();
+    return ["すべて", ...tags_sort];
+  }
+  const tags = arrayTags();
+
+  //タグでの絞り込み機能
+  const [tag, setTag] = useState<string>("");
+
+  const isFilter = (blog: Blog) => {
+    if(!tag){
+      return blog.tag === blog.tag;
+    }else {
+      return blog.tag === tag;
+    }
+  }
+  const new_blogs = blogs.filter(isFilter);
+  const tagFilter = (tag: string) => {
+    if(tag === "すべて"){
+      setTag("");
+    }else {
+      setTag(tag);
+    }
+  };
+
   return (
     <div>
-      {blogs && blogs.map((blog) => (
-        <Post key={blog.id} {...blog} />
-      ))}
+      <div>
+        {tags.map((tag) => (
+          <div key={tag}>
+            <button onClick={() => tagFilter(tag)}>
+              {tag}
+            </button>
+          </div>
+        ))}
+      </div>
+      <ul className="grid gap-6 sm:grid-cols-2 mt-12">
+        {new_blogs && new_blogs.map((blog) => (
+          <li key={blog.id}>
+            <Post {...blog} />
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
