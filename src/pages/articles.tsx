@@ -39,7 +39,7 @@ const Articles = ({blogs}: Blogs) => {
 
   return (
     <div>
-      <div>
+      <div className="grid gap-2 grid-cols-10 mt-12">
         {tags.map((tag) => (
           <div key={tag}>
             <button onClick={() => tagFilter(tag)}>
@@ -48,7 +48,7 @@ const Articles = ({blogs}: Blogs) => {
           </div>
         ))}
       </div>
-      <ul className="grid gap-6 sm:grid-cols-2 mt-12">
+      <ul className="grid gap-6 sm:grid-cols-2">
         {new_blogs && new_blogs.map((blog) => (
           <li key={blog.id}>
             <Post {...blog} />
