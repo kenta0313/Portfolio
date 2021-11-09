@@ -8,7 +8,6 @@ interface Blogs {
 }
 
 const Articles = ({blogs}: Blogs) => {
-  //タグの配列作成
   const arrayTags = () => {
     const tags = blogs.map((blog) => {
       return blog.tag
@@ -18,7 +17,6 @@ const Articles = ({blogs}: Blogs) => {
   }
   const tags = arrayTags();
 
-  //タグでの絞り込み機能
   const [tag, setTag] = useState<string>("");
 
   const isFilter = (blog: Blog) => {
