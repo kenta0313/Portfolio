@@ -11,9 +11,10 @@ interface Params extends ParsedUrlQuery {
 }
 
 const ArticleDetail = ({post}: Post) => {
+  const {body} = post;
   return (
     <div>
-      {post.body}
+      {body}
     </div>
   )
 }
