@@ -17,7 +17,7 @@ const Articles = ({blogs}: Blogs) => {
   }
   const tags = arrayTags();
 
-  const [tag, setTag] = useState<string>("");
+  const [tag, setTag] = useState<Blog['tag']>("");
 
   const isFilter = (blog: Blog) => {
     if(!tag){
@@ -27,7 +27,7 @@ const Articles = ({blogs}: Blogs) => {
     }
   }
   const new_blogs = blogs.filter(isFilter);
-  const tagFilter = (tag: string) => {
+  const tagFilter = (tag: Blog['tag']) => {
     if(tag === "すべて"){
       setTag("");
     }else {
