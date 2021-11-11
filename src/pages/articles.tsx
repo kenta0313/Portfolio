@@ -37,10 +37,12 @@ const Articles = ({blogs}: Blogs) => {
 
   return (
     <div>
-      <div className="grid gap-2 grid-cols-10 mt-12">
+      <div className="grid gap-2 grid-cols-7 my-12 ml-5">
         {tags.map((tag) => (
           <div key={tag}>
-            <button onClick={() => tagFilter(tag)}>
+            <button onClick={() => tagFilter(tag)}
+            className="bg-gray-400 px-2 rounded"
+            >
               {tag}
             </button>
           </div>

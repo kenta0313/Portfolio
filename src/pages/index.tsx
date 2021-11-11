@@ -3,7 +3,6 @@ const baseUrl = `https://${serviceId}.microcms.io/api/v1`
 const apiKey: string = process.env.NEXT_PUBLIC_MICRO_CMS_API_KEY as string;
 
 const Home = () => {
-  console.log(serviceId);
   return (
     <div>
       <main>
